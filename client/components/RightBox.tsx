@@ -31,7 +31,7 @@ export default function RightBox(props) {
     <a.mesh
       {...props}
       ref={mesh}
-      scale={[.1,20,.001]}
+      scale={[.1, 20, .001]}
       onClick={(event) => setActive(!active)}
       onPointerOver={(event) => setHover(true)}
       onPointerOut={(event) => setHover(false)}

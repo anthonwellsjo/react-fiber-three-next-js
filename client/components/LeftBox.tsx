@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { useSpring, a } from '@react-spring/three';
 
@@ -11,16 +11,31 @@ export default function LeftBox(props) {
   // Subscribe this component to the render-loop, rotate the mesh every frame
 
   useFrame(() => {
-    console.log(mesh.current.position.x)
-    return (mesh.current.position.x -= window.scrollY / 200000)
+    if (window.scrollY > 300 && !active) {
+      console.log("scroll over 300");
+      setActive(true);
+    }
+    if (window.scrollY < 301 && active) {
+      console.log("scroll over 300");
+      setActive(false);
+    }
+    // console.log(mesh.current.position.x)
+    // return (mesh.current.position.x -= window.scrollY / 200000)
   })
 
+  useEffect(() => {
+    if (window.scrollY > 300) {
+      console.log("scroll over 300");
+      setActive(true);
+    }
+  }, [window.scrollY])
+
   const animProps = useSpring({
-    scale: active ? [.5, .5, .5] : [.25, 5, .0001],
-    color: hovered ? "lightpink" : "yellow",
+    scale: active ? [1, 1, 1] : [.0025, 5, 0.001],
+    color: active ? "black" : "black",
     config: {
-      friction: 40,
-      mass: 2
+      friction: 100,
+      mass: 20
     }
   })
   // Return view, these are regular three.js elements expressed in JSX
@@ -30,10 +45,8 @@ export default function LeftBox(props) {
       ref={mesh}
       scale={animProps.scale}
       onClick={(event) => setActive(!active)}
-      onPointerOver={(event) => setHover(true)}
-      onPointerOut={(event) => setHover(false)}
     >
-      <boxGeometry args={[1, 1, 1]} />
+      <boxGeometry args={[5, 15, .01]} />
       <a.meshStandardMaterial color={animProps.color} />
     </a.mesh>
   )

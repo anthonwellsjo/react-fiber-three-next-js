@@ -11,12 +11,7 @@ export default function Home() {
       <Canvas>
         <ambientLight />
         <pointLight position={[50, 10, 10]} />
-        <LeftBox position={[-2.2, 2, 0]} />
-        <LeftBox position={[-1.2, 2, 0]} />
-        <LeftBox position={[-.2, 2, 0]} />
-        <RightBox position={[.8, 2, 0]} />
-        <RightBox position={[1.8, 2, 0]} />
-        <RightBox position={[2.8, 2, 0]} />
+        <LeftBox position={[0, 0, 0]} />
       </Canvas>
     </div>
   )
