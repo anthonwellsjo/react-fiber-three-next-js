@@ -51,8 +51,12 @@ export default function LeftBox({ defaultPosition, color }: props) {
       setRotate(false);
       setLast(false);
     }
-    if (rotate) return mesh.current.rotation.y += 0.02;
-    if (!rotate && mesh.current.rotation.y > 0.0) return mesh.current.rotation.y -= 0.1;
+    if (rotate) {
+      if (mesh.current != null) { return mesh.current.rotation.y += 0.02; }
+    }
+    if (!rotate && mesh.current.rotation.y > 0.0) {
+      if (mesh.current != null) { return mesh.current.rotation.y -= 0.1; }
+    }
 
   })
 
