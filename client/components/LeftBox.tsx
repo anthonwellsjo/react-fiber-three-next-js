@@ -16,7 +16,7 @@ interface props {
 
 export default function LeftBox({ defaultPosition, color }: props) {
   // This reference will give us direct access to the mesh
-  const mesh = useRef()
+  const mesh = useRef(null)
   // Set up state for the hovered and active state
   const [wide, setWide] = useState(false)
   const [thick, setThick] = useState(false)
@@ -55,7 +55,7 @@ export default function LeftBox({ defaultPosition, color }: props) {
       if (mesh.current != null) { return mesh.current.rotation.y += 0.02; }
     }
     if (!rotate && mesh.current.rotation.y > 0.0) {
-      if (mesh.current != null) { return mesh.current.rotation.y -= 0.1; }
+      if (mesh?.current != null) { return mesh.current.rotation.y -= 0.1; }
     }
 
   })
