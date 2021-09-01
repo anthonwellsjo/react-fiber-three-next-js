@@ -96,12 +96,12 @@ export default function LeftBox({ defaultPosition, color }: props) {
       mass: 2
     }
   })
-  // Return view, these are regular three.js elements expressed in JSX
+
   return (
     <a.mesh
       ref={mesh}
-      scale={anim2Props.scale}
-      position={anim2Props.position}
+      scale={anim2Props.scale as any}
+      position={anim2Props.position as any}
     >
       <boxGeometry args={[5, 5, 5]} />
       <a.meshStandardMaterial color={animProps.color} />
