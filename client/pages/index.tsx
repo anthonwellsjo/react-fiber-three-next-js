@@ -1,9 +1,7 @@
 import react from 'react';
 import styles from '../styles/Home.module.css'
 import { Canvas, useFrame } from '@react-three/fiber'
-import Box from '../components/LeftBox';
 import LeftBox from '../components/LeftBox';
-import RightBox from '../components/RightBox';
 import Head from 'next/head';
 
 export default function Home() {
